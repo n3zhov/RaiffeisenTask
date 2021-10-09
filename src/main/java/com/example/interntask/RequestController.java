@@ -1,23 +1,38 @@
 package com.example.interntask;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.javatuples.*;
+
 
 @RestController
 @RequestMapping("/api/socks")
 public class RequestController {
+
+
     @RequestMapping
-    public String getSocks(){
-        return "HTTP GET request was sent";
+    public ResponseEntity<String> getSocks(){
+        return ResponseEntity.status(HttpStatus.OK).body("HTTP GET request was sent");
     }
     @PostMapping("/income")
-    public String incomeSocks(){
-        return "HTTP POST income request was sent";
+    public ResponseEntity<String> incomeSocks(@RequestBody String body){
+        try{
+            Triplet <String, Integer, Integer> parseRes = JSONParsingService.parse(body);
+            return ResponseEntity.status(HttpStatus.OK).body("");
+        }
+        catch(Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+        }
     }
     @PostMapping("/outcome")
-    public String outcomeSocks(){
-        return "HTTP POST outcome request was sent";
+    public  ResponseEntity<String> outcomeSocks(@RequestBody String body){
+        try{
+            Triplet <String, Integer, Integer> parseRes = JSONParsingService.parse(body);
+            return ResponseEntity.status(HttpStatus.OK).body("");
+        }
+        catch(Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+        }
     }
 }
