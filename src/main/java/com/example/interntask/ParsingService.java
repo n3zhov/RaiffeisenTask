@@ -14,7 +14,7 @@ public class ParsingService{
         int secondVal = Integer.parseInt(retValue.getValue2().toString());
         if(retValue.getValue0().isEmpty() ||
                 !(0 <= firstVal && firstVal <= 100) ||
-                !(0 <= secondVal && secondVal <= 100)){
+                !(0 < secondVal)){
             throw new IllegalArgumentException();
         }
         return retValue;
