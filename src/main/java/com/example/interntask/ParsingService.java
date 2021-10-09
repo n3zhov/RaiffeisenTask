@@ -4,8 +4,8 @@ import org.javatuples.Triplet;
 
 import java.util.Map;
 
-public class JSONParsingService{
-    public static Triplet<String, Integer, Integer> parse(String raw){
+public class ParsingService{
+    public static Triplet<String, Integer, Integer> JSONParse(String raw){
         JsonParser parser = JsonParserFactory.getJsonParser();
         Map<String, Object> map = parser.parseMap(raw);
         Triplet <String, Integer, Integer> retValue = Triplet.with(map.get("color").toString(),
