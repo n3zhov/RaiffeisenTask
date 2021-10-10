@@ -17,7 +17,7 @@ public class SocksServiceIml implements SocksService {
     public void income(SocksByType socks) {
         List<SocksByType> res = sInt.findAllByColorAndCottonPartEquals(socks.getColor(), socks.getCottonPart());
         if(res.isEmpty()){
-            socks.setType_id(sInt.findAll().size() + 1);
+            socks.setType_id(socks.getColor().toString().toLowerCase() + socks.getCottonPart().toString());
             sInt.save(socks);
         }
         else{
@@ -39,7 +39,12 @@ public class SocksServiceIml implements SocksService {
                 throw new IllegalArgumentException();
             }
             resQuery.setQuantity(resQuery.getQuantity() - socks.getQuantity());
-            sInt.save(resQuery);
+            if(resQuery.getQuantity() != 0){
+                sInt.save(resQuery);
+            }
+            else{
+                sInt.delete(resQuery);
+            }
         }
     }
 

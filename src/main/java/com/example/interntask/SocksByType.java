@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @DynamicUpdate(value = true)
 public class SocksByType {
     @Id
-    private Integer type_id;
+    private String type_id;
 
     @Column
     private String color;
