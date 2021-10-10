@@ -1,7 +1,7 @@
 package com.example.interntask;
+
 import org.springframework.boot.json.*;
 import org.javatuples.Triplet;
-
 import java.util.Map;
 
 public class ParsingService{
@@ -19,4 +19,6 @@ public class ParsingService{
         }
         return retValue;
     }
+
+
 }
