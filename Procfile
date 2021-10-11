@@ -1,1 +1,1 @@
-web: java -jar target/InternTask-0.0.1-SNAPSHOT.jar
+web: java -jar target/InternTask-0.0.1-SNAPSHOT.jar --spring.config.location=target/application.properties
