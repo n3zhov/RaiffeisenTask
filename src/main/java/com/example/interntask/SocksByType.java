@@ -3,6 +3,7 @@ package com.example.interntask;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Table;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
+@Table(appliesTo = "socks_by_type")
 @DynamicUpdate(value = true)
 public class SocksByType {
     @Id
