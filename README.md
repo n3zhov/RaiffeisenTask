@@ -28,7 +28,7 @@ http://socks-application.herokuapp.com/api/socks/outcome
 ## Как это сделано?
 
 
-Из самого основного: Spring Boot + Web + JPA. (+Flyway, но на heroku его нет, о чём ниже)
+Из самого основного: Java8 + MySQL (8.0, на heroku 5.6) + Spring Boot + Web + JPA. (+Flyway, но на heroku его нет, о чём ниже)
 
 В качестве реляционной базы данных был использован MySQL, сама БД состоит из одной таблицы. 
 
@@ -76,6 +76,17 @@ spring.flyway.url=jdbc:mysql://localhost:3306/Socks
 spring.flyway.user=nezhov
 spring.flyway.password=220501
 ```
+
+После этого для запуска докер контейнеров требуется ввести следующие команды:
+
+```bash
+sudo systemctl start mysql
+mvn package
+sudo systemctl stop mysql
+docker-compose build
+docker-compose up
+```
+
 
 ## Почему на Heroku нет Flyway?
 
