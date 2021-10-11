@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   api_service:
-    build: .
+    image: socks
     ports:
       - "8080:8080"
     depends_on:
