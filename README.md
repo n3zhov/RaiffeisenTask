@@ -36,6 +36,8 @@ http://socks-application.herokuapp.com/api/socks/outcome
 
 ![alt text](DB.jpg "Title")
 
+[SQL скрипт инициализации БД](src/main/resources/db/migration/V1__Init_DB.sql)
+
 Для версионирования БД был использован фреймворк Flyway, но при развёртывании на Heroku оказалось, что там стоит слишком 
 старая версия MySQL. В любом случае, Flyway можно включить, изменив application.properties с этого:
 
