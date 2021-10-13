@@ -21,6 +21,18 @@ http://socks-application.herokuapp.com/api/socks/income
 POST Outcome:
 
 http://socks-application.herokuapp.com/api/socks/outcome
+
+Пример body для POST income/outcome запросов (в случае income quantity добавляет указанное кол-во 
+носков, в случае outcome убавляет):
+
+```json
+{
+    "color":"yellow",
+    "cottonPart":80,
+    "quantity":2000
+}
+```
+
 ## Список URL HTTP-методов есть в task.md
 
 [task.md](task.md)
@@ -50,13 +62,21 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.jpa.database=MYSQL
 spring.jpa.show-sql=true
+
+
+#when first time booting with jpa use string below, 
+# but no need if using flyway
 spring.jpa.hibernate.ddl-auto=create
+
+
+#spring.jpa.hibernate.ddl-auto=validate
 spring.flyway.enabled=false
 server.port=${PORT:8080}
 #uncomment if true,requires MySQL 5.7 or higher
 #spring.flyway.url=jdbc:mysql://localhost:3306/Socks
 #spring.flyway.user=nezhov
 #spring.flyway.password=220501
+
 
 ```
 
@@ -70,13 +90,20 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.jpa.database=MYSQL
 spring.jpa.show-sql=true
-spring.jpa.hibernate.ddl-auto=create
+
+
+#when first time booting with jpa use string below, but no need if using flyway
+#spring.jpa.hibernate.ddl-auto=create
+
+
+spring.jpa.hibernate.ddl-auto=validate
 spring.flyway.enabled=true
 server.port=${PORT:8080}
 #uncomment if true,requires MySQL 5.7 or higher
 spring.flyway.url=jdbc:mysql://localhost:3306/Socks
 spring.flyway.user=nezhov
 spring.flyway.password=220501
+
 ```
 
 После этого для запуска докер контейнеров требуется ввести следующие команды:
